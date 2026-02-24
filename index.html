@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>EXPOPIN</title>
+
+<style>
+
+body{
+margin:0;
+background:black;
+color:white;
+font-family:Arial;
+}
+
+
+/* Welcome */
+
+#welcome{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.start{
+background:green;
+padding:15px 40px;
+border:none;
+font-size:20px;
+color:white;
+}
+
+
+/* Community */
+
+.community{
+
+position:fixed;
+bottom:10px;
+left:50%;
+transform:translateX(-50%);
+
+background:brown;
+padding:15px 30px;
+border:none;
+color:white;
+
+}
+
+
+/* Dashboard */
+
+#dashboard{
+
+display:none;
+padding:10px;
+
+}
+
+
+/* Slideshow */
+
+.slideshow img{
+
+width:100%;
+height:200px;
+
+}
+
+
+/* Boxes */
+
+.grid{
+
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+
+}
+
+.box{
+
+background:brown;
+padding:30px;
+text-align:center;
+font-weight:bold;
+
+}
+
+
+/* Lock */
+
+.lock{
+
+position:absolute;
+right:10px;
+top:10px;
+font-size:25px;
+
+}
+
+
+/* Posts */
+
+.post{
+
+background:#111;
+border:1px solid white;
+padding:10px;
+margin:10px;
+
+}
+
+
+/* Admin */
+
+#admin{
+
+display:none;
+padding:20px;
+
+}
+
+textarea{
+
+width:100%;
+height:150px;
+
+}
+
+
+/* Customer Care */
+
+.customer{
+
+position:fixed;
+right:10px;
+bottom:80px;
+
+width:70px;
+height:70px;
+
+background:black;
+
+border-radius:50%;
+
+text-align:center;
+
+font-size:10px;
+
+padding-top:15px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+
+<!-- Welcome -->
+
+<div id="welcome">
+
+<h1>Welcome to EXPOPIN</h1>
+
+<button class="start" onclick="start()">
+
+Get STARTED
+
+</button>
+
+
+<button class="community"
+
+onclick="window.location='https://chat.whatsapp.com/BtH4qB1Z5rTGSg7JhBiVuw'">
+
+Community Group
+
+</button>
+
+
+</div>
+
+
+
+<!-- Dashboard -->
+
+<div id="dashboard">
+
+<div class="lock" onclick="login()">🔒</div>
+
+
+<div class="slideshow">
+
+<img id="slide"
+
+src="https://imagizer.imageshack.com/img922/2882/4bNqvi.png">
+
+</div>
+
+
+
+<div class="grid">
+
+<div class="box" onclick="home()">Home</div>
+
+<div class="box" onclick="openPage('waec')">WAEC</div>
+
+<div class="box" onclick="openPage('neco')">NECO</div>
+
+<div class="box" onclick="openPage('jamb')">JAMB</div>
+
+<div class="box" onclick="openPage('nabteb')">NABTEB</div>
+
+<div class="box" onclick="openPage('ijmb')">IJMB</div>
+
+<div class="box" onclick="openPage('jupeb')">JUPEB</div>
+
+<div class="box" onclick="openPage('necogce')">NECO GCE</div>
+
+<div class="box" onclick="openPage('waecgce')">WAEC GCE</div>
+
+<div class="box" onclick="openPage('nabtebgce')">NABTEB GCE</div>
+
+</div>
+
+
+
+<div class="customer"
+
+onclick="window.location='https://wa.me/2347088836422'">
+
+🎧<br>
+
+Customer Care
+
+</div>
+
+
+<button class="community"
+
+onclick="window.location='https://chat.whatsapp.com/BtH4qB1Z5rTGSg7JhBiVuw'">
+
+Community Group
+
+</button>
+
+
+</div>
+
+
+
+<!-- POSTS -->
+
+<div id="posts"
+
+style="display:none;padding:20px">
+
+<h2 id="title"></h2>
+
+<div id="content"></div>
+
+<button onclick="home()">
+
+Back
+
+</button>
+
+</div>
+
+
+
+<!-- ADMIN -->
+
+<div id="admin">
+
+<h2>ADMIN PANEL</h2>
+
+
+<select id="category">
+
+<option value="jamb">JAMB</option>
+<option value="waec">WAEC</option>
+<option value="neco">NECO</option>
+<option value="nabteb">NABTEB</option>
+<option value="ijmb">IJMB</option>
+<option value="jupeb">JUPEB</option>
+<option value="necogce">NECO GCE</option>
+<option value="waecgce">WAEC GCE</option>
+<option value="nabtebgce">NABTEB GCE</option>
+
+</select>
+
+
+<br><br>
+
+
+<textarea id="text"></textarea>
+
+
+<br><br>
+
+
+<input type="file" id="image">
+
+
+<br><br>
+
+
+<button onclick="savePost()">
+
+POST
+
+</button>
+
+
+<button onclick="home()">
+
+Back
+
+</button>
+
+
+</div>
+
+
+
+<script>
+
+/* START */
+
+function start(){
+
+welcome.style.display="none";
+
+dashboard.style.display="block";
+
+}
+
+
+
+/* SLIDESHOW */
+
+var imgs=[
+
+"https://imagizer.imageshack.com/img922/2882/4bNqvi.png",
+"https://imagizer.imageshack.com/img923/301/QPkEQj.png",
+"https://imagizer.imageshack.com/img923/6383/RDUaqW.png",
+"https://imagizer.imageshack.com/img922/2029/LUFy4I.png"
+
+]
+
+var i=0;
+
+setInterval(function(){
+
+i++;
+
+if(i>=imgs.length)i=0;
+
+slide.src=imgs[i];
+
+},3000);
+
+
+
+/* HOME */
+
+function home(){
+
+posts.style.display="none";
+
+admin.style.display="none";
+
+dashboard.style.display="block";
+
+}
+
+
+
+/* OPEN PAGES */
+
+function openPage(cat){
+
+dashboard.style.display="none";
+
+posts.style.display="block";
+
+title.innerHTML=cat.toUpperCase();
+
+
+
+let data=
+
+JSON.parse(localStorage.getItem(cat))||[];
+
+
+
+let html="";
+
+
+
+data.slice().reverse().forEach(function(p,index){
+
+html+=`
+
+<div class="post">
+
+${p.text}
+
+<br>
+
+${p.image?`<img src="${p.image}" width="100%">`:""}
+
+<br>
+
+<button onclick="editPost('${cat}',${index})">
+
+Edit
+
+</button>
+
+
+<button onclick="deletePost('${cat}',${index})">
+
+Delete
+
+</button>
+
+</div>
+
+`;
+
+});
+
+
+
+content.innerHTML=html||"No posts yet";
+
+}
+
+
+
+/* LOGIN */
+
+function login(){
+
+let code=prompt("Enter Admin Code");
+
+if(code=="2020"){
+
+dashboard.style.display="none";
+
+admin.style.display="block";
+
+}
+
+}
+
+
+
+/* SAVE POST */
+
+function savePost(){
+
+let cat=category.value;
+
+let txt=text.value;
+
+let file=image.files[0];
+
+
+
+let reader=new FileReader();
+
+
+
+reader.onload=function(){
+
+let data=
+
+JSON.parse(localStorage.getItem(cat))||[];
+
+
+
+data.push({
+
+text:txt,
+
+image:reader.result
+
+});
+
+
+
+localStorage.setItem(cat,
+
+JSON.stringify(data));
+
+
+
+alert("Posted");
+
+home();
+
+}
+
+
+
+if(file){
+
+reader.readAsDataURL(file);
+
+}else{
+
+reader.onload();
+
+}
+
+}
+
+
+
+/* DELETE */
+
+function deletePost(cat,index){
+
+let data=
+
+JSON.parse(localStorage.getItem(cat))||[];
+
+
+
+data.splice(index,1);
+
+
+
+localStorage.setItem(cat,
+
+JSON.stringify(data));
+
+
+
+openPage(cat);
+
+}
+
+
+
+/* EDIT */
+
+function editPost(cat,index){
+
+let data=
+
+JSON.parse(localStorage.getItem(cat))||[];
+
+
+
+let newText=prompt("Edit Post");
+
+
+
+data[index].text=newText;
+
+
+
+localStorage.setItem(cat,
+
+JSON.stringify(data));
+
+
+
+openPage(cat);
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
